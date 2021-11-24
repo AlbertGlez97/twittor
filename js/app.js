@@ -1,6 +1,20 @@
+// Uncaught (in promise) TypeError: Failed to register a 
+// ServiceWorker for scope ('https://albertglez97.github.io/') 
+// with script ('https://albertglez97.github.io/sw.js'): A bad 
+// HTTP response code (404) was received when fetching the script.
+//Corregir error, de que nuestro codigo nuestra en la raiz
+var url = window.location.href;
+//Aqui se encuentra el service Worker
+var swLocation = '/twittor/sw.js';
+
 
 if(navigator.serviceWorker){
-    navigator.serviceWorker.register('/sw.js');
+
+    if(url.includes('localhost')){
+        swLocation = '/sw.js'
+    }
+
+    navigator.serviceWorker.register(swLocation);
 }
 
 
